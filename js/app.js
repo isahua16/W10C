@@ -36,9 +36,9 @@ function change_background_color (event)
 {
     if(event[`code`] === `Space`)
     {
-        if(event[`currentTarget`][`style`][`backgroundColor`] === `red`)
+        if(event[`currentTarget`][`style`][`backgroundColor`] !== ``)
         {
-            event[`currentTarget`][`style`][`backgroundColor`] = `white`;
+            event[`currentTarget`][`style`][`backgroundColor`] = ``;
         }
         else
         {
@@ -46,14 +46,41 @@ function change_background_color (event)
         }
     }
 }
- 
+
+function change_background_color_auto()
+{
+    if(page[`style`][`backgroundColor`] !== ``)
+    {
+        page[`style`][`backgroundColor`] = [``];
+    }
+    else
+    {
+        page[`style`][`backgroundColor`] = [`red`];
+    }
+}
+
+function random_position_value_percentage()
+{
+    return Math.random() * 90;
+}
+
+
+function move_image_auto()
+{
+    button[`style`][`top`] = `${random_position_value_percentage()}%`;
+    button[`style`][`left`] = `${random_position_value_percentage()}%`;
+}
+
 let dog = document.querySelector(`#dog`);
 let text = document.querySelector(`#text`);
 let footer_logo = document.querySelector(`#footer_logo`)
 let page = document.querySelector(`body`);
+let button = document.querySelector(`button`);
 
 dog.addEventListener(`click`, change_image);
 text.addEventListener(`dblclick`, change_font_size)
 footer_logo.addEventListener(`mouseover`, change_hover_on);
 footer_logo.addEventListener(`mouseleave`, change_hover_off);
 page.addEventListener(`keydown`, change_background_color);
+setTimeout(change_background_color_auto, 15000);
+setInterval(move_image_auto, 3000)

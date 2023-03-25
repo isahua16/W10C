@@ -26,12 +26,10 @@ section {
 }
 
 img {
-    min-width: 320px;
     width:50%;
     max-width: 400px;
     height: 350px;
     object-fit: cover;
-
 }
 
 footer {
@@ -39,4 +37,8 @@ footer {
     display: grid;
     grid-template-columns: 1fr 1fr;
     place-items: center;
+}
+button {
+    position:absolute;
+    background-color: green;
 }
